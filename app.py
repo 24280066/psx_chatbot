@@ -160,6 +160,26 @@ st.set_page_config(
     layout="wide",
 )
 
+# 🔧 Dark theme via CSS: black background, white text
+st.markdown(
+    """
+    <style>
+        .stApp {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+        [data-testid="stSidebar"] {
+            background-color: #111111;
+        }
+        /* Make markdown text white by default */
+        .stMarkdown, .stText, .stCaption, .stHeader, .stSubheader {
+            color: #FFFFFF;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 df = load_data()
 search_tip = build_search_tip(df)
 
@@ -282,7 +302,6 @@ with left_col:
         st.caption("Returns shown as decimal fractions (e.g. 0.47 = 47% 1-year return).")
     else:
         st.info("No return columns found for performance chart.")
-
 
     # Similar stocks section
     st.markdown("#### 🧭 Similar stocks to this one")
